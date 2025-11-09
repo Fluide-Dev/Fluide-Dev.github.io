@@ -5,55 +5,133 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Golden Simian Interactive</title>
   <style>
+    /* ===== GLOBAL STYLES ===== */
     body {
-      font-family: Arial, sans-serif;
-      background-color: #0f0f0f;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: radial-gradient(circle at top, #121212 0%, #0a0a0a 100%);
       color: #f2f2f2;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
 
     header {
-      background-color: #1a1a1a;
+      background: rgba(255, 215, 0, 0.08);
+      backdrop-filter: blur(10px);
       text-align: center;
-      padding: 20px;
-      font-size: 1.8em;
-      font-weight: bold;
+      padding: 40px 10px;
+      font-size: 2em;
+      font-weight: 700;
+      color: #ffd700;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+      letter-spacing: 1px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    /* ===== TABS ===== */
     .tabs {
       display: flex;
       justify-content: center;
-      background-color: #222;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     .tab {
-      padding: 14px 20px;
+      padding: 16px 26px;
       cursor: pointer;
-      background-color: #222;
       border: none;
-      color: white;
-      font-size: 1em;
-      transition: 0.3s;
+      background: transparent;
+      color: #ddd;
+      font-size: 1.1em;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
     }
 
-    .tab:hover, .tab.active {
-      background-color: #444;
+    .tab:hover {
+      color: #ffd700;
+      transform: scale(1.05);
     }
 
+    .tab.active {
+      color: #ffd700;
+      border-bottom: 2px solid #ffd700;
+    }
+
+    /* ===== CONTENT ===== */
     .content {
-      padding: 30px;
-      max-width: 800px;
-      margin: 0 auto;
+      padding: 50px 25px;
+      max-width: 850px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+      transition: opacity 0.5s ease;
+    }
+
+    h2 {
+      color: #ffd700;
+      font-size: 1.6em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 10px;
+    }
+
+    p, li {
+      line-height: 1.6em;
+      color: #ccc;
+      font-size: 1.05em;
     }
 
     a {
-      color: #00bfff;
+      color: #ffd700;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
 
     a:hover {
-      text-decoration: underline;
+      color: #fff176;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: rgba(255, 255, 255, 0.04);
+      margin: 10px 0;
+      padding: 15px 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    li:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-3px);
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 600px) {
+      header {
+        font-size: 1.6em;
+        padding: 25px;
+      }
+
+      .tab {
+        padding: 12px 14px;
+        font-size: 1em;
+      }
+
+      .content {
+        padding: 25px 18px;
+        margin: 20px;
+      }
     }
   </style>
 </head>
@@ -62,16 +140,16 @@
   <header>Golden Simian Interactive</header>
 
   <div class="tabs">
-    <button class="tab active" onclick="showTab('info')">Info</button>
-    <button class="tab" onclick="showTab('games')">Games</button>
+    <button class="tab active" onclick="showTab('info', event)">Info</button>
+    <button class="tab" onclick="showTab('games', event)">Games</button>
   </div>
 
   <div class="content" id="info">
     <h2>About Us</h2>
     <p>
-      <!-- Change this text easily -->
-      Welcome to our website! We create unique and immersive indie games.  
-      Stay tuned for updates and new releases.
+      Welcome to <strong>Golden Simian Interactive</strong> — we craft unique and immersive indie games  
+      focused on atmosphere, exploration, and creativity.  
+      Stay tuned for new releases and exciting updates.
     </p>
     <p>
       Contact us: <a href="mailto:orangegtpersonalemail@gmail.com">orangegtpersonalemail@gmail.com</a>
@@ -81,14 +159,13 @@
   <div class="content" id="games" style="display: none;">
     <h2>Our Games</h2>
     <ul>
-      <!-- Add or remove games easily -->
-      <li><strong>Game 1:</strong> <a href="#">Munkie Mayhem</a> – Run Around And Have Fun With Friends And More.</li>
-      <li><strong>Game 3:</strong> <a href="#">Coming Soon...</a></li>
+      <li><strong>Munkie Mayhem:</strong> <a href="#">Run Around And Have Fun With Friends And More</a>.</li>
+      <li><strong>Coming Soon...</strong></li>
     </ul>
   </div>
 
   <script>
-    function showTab(tabName) {
+    function showTab(tabName, event) {
       document.querySelectorAll('.content').forEach(div => div.style.display = 'none');
       document.getElementById(tabName).style.display = 'block';
       document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
@@ -98,4 +175,3 @@
 
 </body>
 </html>
-
