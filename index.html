@@ -103,17 +103,58 @@
       padding: 0;
     }
 
-    li {
+    /* ===== GAME LIST ===== */
+    .game {
       background: rgba(255, 255, 255, 0.04);
-      margin: 10px 0;
-      padding: 15px 20px;
-      border-radius: 10px;
+      margin: 12px 0;
+      padding: 18px 20px;
+      border-radius: 12px;
       transition: transform 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+      position: relative;
     }
 
-    li:hover {
+    .game:hover {
       background: rgba(255, 255, 255, 0.08);
       transform: translateY(-3px);
+    }
+
+    .game-title {
+      font-weight: bold;
+      font-size: 1.1em;
+      color: #ffd700;
+      margin-bottom: 5px;
+    }
+
+    .game-details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.4s ease;
+      margin-top: 8px;
+    }
+
+    .game.active .game-details {
+      max-height: 400px;
+      opacity: 1;
+      margin-top: 10px;
+    }
+
+    .game-details a {
+      display: inline-block;
+      margin: 6px 8px 0 0;
+      padding: 6px 12px;
+      border: 1px solid #ffd700;
+      border-radius: 6px;
+      color: #ffd700;
+      font-size: 0.9em;
+      transition: all 0.3s ease;
+    }
+
+    .game-details a:hover {
+      background: #ffd700;
+      color: #111;
+      text-shadow: none;
     }
 
     /* ===== MOBILE ===== */
@@ -144,6 +185,7 @@
     <button class="tab" onclick="showTab('games', event)">Games</button>
   </div>
 
+  <!-- Info Section -->
   <div class="content" id="info">
     <h2>About Us</h2>
     <p>
@@ -156,11 +198,30 @@
     </p>
   </div>
 
+  <!-- Games Section -->
   <div class="content" id="games" style="display: none;">
     <h2>Our Games</h2>
     <ul>
-      <li><strong>Munkie Mayhem:</strong> <a href="#">Run Around And Have Fun With Friends And More</a>.</li>
-      <li><strong>Coming Soon...</strong></li>
+      <!-- Example Game 1 -->
+      <li class="game" onclick="toggleGame(this)">
+        <div class="game-title">Munkie Mayhem</div>
+        <div class="game-summary">Run around and have fun with friends and more.</div>
+        <div class="game-details">
+          <p><strong>Description:</strong> A fast-paced social VR experience full of chaos and laughter. Swing, climb, and explore fun maps with friends.</p>
+          <a href="https://discord.gg/yourdiscord" target="_blank">Join Discord</a>
+          <a href="https://www.oculus.com/experiences/quest/your-applab-id" target="_blank">App Lab</a>
+          <a href="https://youtube.com/yourtrailer" target="_blank">Trailer</a>
+        </div>
+      </li>
+
+      <!-- Example Coming Soon -->
+      <li class="game" onclick="toggleGame(this)">
+        <div class="game-title">Coming Soon...</div>
+        <div class="game-summary">New worlds are on the horizon.</div>
+        <div class="game-details">
+          <p>Stay tuned for future releases from Golden Simian Interactive.</p>
+        </div>
+      </li>
     </ul>
   </div>
 
@@ -170,6 +231,10 @@
       document.getElementById(tabName).style.display = 'block';
       document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
+    }
+
+    function toggleGame(element) {
+      element.classList.toggle('active');
     }
   </script>
 
