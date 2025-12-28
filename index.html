@@ -1,210 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Golden Simian Interactive</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banana Byte Studios</title>
   <style>
     body {
-      font-family: 'Poppins', Arial, sans-serif;
-      background: radial-gradient(circle at top, #121212 0%, #0a0a0a 100%);
-      color: #f2f2f2;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+      background-color: #f8f8f8;
+      color: #222;
     }
     header {
-      background: rgba(255, 215, 0, 0.08);
-      backdrop-filter: blur(10px);
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
-      padding: 40px 10px;
-      font-size: 2em;
-      font-weight: 700;
-      color: #ffd700;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-      letter-spacing: 1px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 30px 10px;
     }
-    .tabs {
-      display: flex;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(8px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    }
-    .tab {
-      padding: 16px 26px;
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      color: #ddd;
-      font-size: 1.1em;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-    }
-    .tab:hover {
-      color: #ffd700;
-      transform: scale(1.05);
-    }
-    .tab.active {
-      color: #ffd700;
-      border-bottom: 2px solid #ffd700;
-    }
-    .content {
-      padding: 50px 25px;
-      max-width: 850px;
-      margin: 40px auto;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 18px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
-      transition: opacity 0.5s ease;
-    }
-    h2 {
-      color: #ffd700;
-      font-size: 1.6em;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 10px;
-    }
-    p, li {
-      line-height: 1.6em;
-      color: #ccc;
-      font-size: 1.05em;
-    }
-    a {
-      color: #ffd700;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: #fff176;
-      text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    .game {
-      background: rgba(255, 255, 255, 0.04);
-      margin: 12px 0;
-      padding: 18px 20px;
-      border-radius: 12px;
-      transition: transform 0.3s ease, background 0.3s ease;
-      cursor: pointer;
-      position: relative;
-    }
-    .game:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-3px);
-    }
-    .game-title {
-      font-weight: bold;
-      font-size: 1.1em;
-      color: #ffd700;
-      margin-bottom: 5px;
-    }
-    .game-details {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: all 0.4s ease;
-      margin-top: 8px;
-    }
-    .game.active .game-details {
-      max-height: 400px;
-      opacity: 1;
-      margin-top: 10px;
-    }
-    .game-details a {
-      display: inline-block;
-      margin: 6px 8px 0 0;
-      padding: 6px 12px;
-      border: 1px solid #ffd700;
-      border-radius: 6px;
-      color: #ffd700;
-      font-size: 0.9em;
-      transition: all 0.3s ease;
-    }
-    .game-details a:hover {
-      background: #ffd700;
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
       color: #111;
-      text-shadow: none;
     }
-    @media (max-width: 600px) {
-      header {
-        font-size: 1.6em;
-        padding: 25px;
-      }
-      .tab {
-        padding: 12px 14px;
-        font-size: 1em;
-      }
-      .content {
-        padding: 25px 18px;
-        margin: 20px;
-      }
+    header p {
+      color: #666;
+      font-size: 1.2em;
+    }
+    nav {
+      text-align: center;
+      margin: 20px 0;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #f1c40f;
+    }
+    section {
+      padding: 50px 10%;
+    }
+    #about {
+      text-align: center;
+    }
+    #about h2, #sneakpeeks h2 {
+      color: #111;
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+    #about p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #555;
+      font-size: 1.1em;
+    }
+    #sneakpeeks {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-top: 40px;
+      padding: 40px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    .gallery img {
+      width: 250px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      background-color: #fff;
+      color: #666;
+      margin-top: 40px;
+      font-size: 0.9em;
+      box-shadow: 0 -1px 6px rgba(0,0,0,0.05);
+    }
+    .socials a {
+      margin: 0 10px;
+      display: inline-block;
+      font-size: 1.2em;
+      text-decoration: none;
+      color: #333;
+    }
+    .socials a:hover {
+      color: #f1c40f;
+    }
+    input[type=file] {
+      display: block;
+      margin: 20px auto;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Banana Byte Studios</h1>
+    <p>Immersive VR Experiences — Sneak Peeks & Updates</p>
+  </header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#sneakpeeks">Sneak Peeks</a>
+    <a href="#contact">Socials</a>
+  </nav>
 
-  <header>Golden Simian Interactive</header>
-
-  <div class="tabs">
-    <button class="tab active" onclick="showTab('info', event)">Info</button>
-    <button class="tab" onclick="showTab('games', event)">Games</button>
-  </div>
-
-  <div class="content" id="info">
+  <section id="about">
     <h2>About Us</h2>
-    <p>
-      Welcome to <strong>Golden Simian Interactive</strong> — we craft unique and immersive indie games  
-      focused on atmosphere, exploration, and creativity.  
-      Stay tuned for new releases and exciting updates.
-    </p>
-    <p>
-      Contact us: <a href="mailto:orangegtpersonalemail@gmail.com">orangegtpersonalemail@gmail.com</a>
-    </p>
-  </div>
+    <p>Welcome to Banana Byte Studios — we craft next-level VR worlds that push the boundaries of immersion. Stay tuned here for behind-the-scenes sneak peeks of our latest creations!</p>
+  </section>
 
-  <div class="content" id="games" style="display: none;">
-    <h2>Our Games</h2>
-    <ul>
-      <li class="game" onclick="toggleGame(this)">
-        <div class="game-title">Munkie Mayhem</div>
-        <div class="game-summary">Run around and have fun with friends and more.</div>
-        <div class="game-details">
-          <p><strong>Description:</strong> A fast-paced social VR experience full of chaos and laughter. Swing, climb, and explore fun maps with friends.</p>
-          <a href="https://discord.gg/RZpd52Bjbb" target="_blank">Join Discord</a>
-          <a href="https://www.oculus.com/experiences/quest/" target="_blank">App Lab Soon...</a>
-          <a href="https://youtube.com/" target="_blank">Trailer Soon...</a>
-        </div>
-      </li>
-      <li class="game" onclick="toggleGame(this)">
-        <div class="game-title">Coming Soon...</div>
-        <div class="game-summary">New worlds are on the horizon.</div>
-        <div class="game-details">
-          <p>Stay tuned for future releases from Golden Simian Interactive.</p>
-        </div>
-      </li>
-    </ul>
-  </div>
+  <section id="sneakpeeks">
+    <h2>Sneak Peeks</h2>
+    <p>Add your latest VR game images below:</p>
+    <input type="file" id="imageUpload" multiple accept="image/*">
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <section id="contact">
+    <h2>Connect With Us</h2>
+    <div class="socials">
+      <a href="https://www.youtube.com/" target="_blank">🎥 YouTube</a>
+      <a href="https://discord.com/" target="_blank">💬 Discord</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Banana Byte Studios — All Rights Reserved
+  </footer>
 
   <script>
-    function showTab(tabName, event) {
-      document.querySelectorAll('.content').forEach(div => div.style.display = 'none');
-      document.getElementById(tabName).style.display = 'block';
-      document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-    }
-    function toggleGame(element) {
-      element.classList.toggle('active');
-    }
-  </script>
+    const uploadInput = document.getElementById('imageUpload');
+    const gallery = document.getElementById('gallery');
 
+    uploadInput.addEventListener('change', (event) => {
+      const files = event.target.files;
+      for (const file of files) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          gallery.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
 </body>
 </html>
